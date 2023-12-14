@@ -108,7 +108,7 @@ sumbitButton.addEventListener('click', (event) => {
   }
 
   if (fnFlag && lnFlag && eFlag && pwdFlag) {
-    fnFlag.value = lnFlag.value = eFlag.value = pwdFlag.value = ' '
+    fnFlag.value = lnFlag.value = eFlag.value = pwdFlag.value = ''
     window.location.href = 'success.html'
   }
 })
