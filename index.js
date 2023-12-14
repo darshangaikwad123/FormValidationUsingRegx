@@ -5,7 +5,7 @@ let emptyFieldMessages = document.querySelectorAll('.empty-field')
 let showPassword = document.querySelector('.btn')
 let firstName, lastName, email, password
 let field
-let fnFlag,lnFlag,eFlag,PwdFlag;
+let fnFlag, lnFlag, eFlag, pwdFlag
 let fnTarget, lnTarget, emailTarget, pwdTarget
 let nameRegx = /^[a-z]+$/i
 let emailRegx = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
@@ -53,9 +53,11 @@ sumbitButton.addEventListener('click', (event) => {
   if (firstName) {
     emptyFieldMessages[0].classList.add('d-none')
     if (!nameRegx.test(firstName)) {
+      fnFlag = false
       fnTarget.classList.add('error')
       errorMessages[0].classList.remove('d-none')
     } else {
+      fnFlag = true
       fnTarget.classList.remove('error')
       errorMessages[0].classList.add('d-none')
     }
@@ -65,9 +67,11 @@ sumbitButton.addEventListener('click', (event) => {
   if (lastName) {
     emptyFieldMessages[1].classList.add('d-none')
     if (!nameRegx.test(lastName)) {
+      lnFlag = false
       lnTarget.classList.add('error')
       errorMessages[1].classList.remove('d-none')
     } else {
+      lnFlag = true
       lnTarget.classList.remove('error')
       errorMessages[1].classList.add('d-none')
     }
@@ -77,9 +81,11 @@ sumbitButton.addEventListener('click', (event) => {
   if (email) {
     emptyFieldMessages[2].classList.add('d-none')
     if (!emailRegx.test(email)) {
+      eFlag = false
       emailTarget.classList.add('error')
       errorMessages[2].classList.remove('d-none')
     } else {
+      eFlag = true
       emailTarget.classList.remove('error')
       errorMessages[2].classList.add('d-none')
     }
@@ -89,14 +95,21 @@ sumbitButton.addEventListener('click', (event) => {
   if (password) {
     emptyFieldMessages[3].classList.add('d-none')
     if (!pwdRegx.test(password)) {
+      pwdFlag = false
       pwdTarget.classList.add('error')
       errorMessages[3].classList.remove('d-none')
     } else {
+      pwdFlag = true
       pwdTarget.classList.remove('error')
       errorMessages[3].classList.add('d-none')
     }
   } else {
     emptyFieldMessages[3].classList.remove('d-none')
+  }
+
+  if (fnFlag && lnFlag && eFlag && pwdFlag) {
+    fnFlag.value = lnFlag.value = eFlag.value = pwdFlag.value = ' '
+    window.location.href = 'success.html'
   }
 })
 
